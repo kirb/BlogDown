@@ -1,0 +1,20 @@
+# Allows files to be accessed without their extensions.
+Options +MultiViews
+
+# Enables the use of path info
+# (e.g. filename.php/path_info_is_here)
+AcceptPathInfo On
+
+# Requires IE to use the latest renderer or Chrome
+# Frame, if it's installed
+Header set X-UA-Compatible "IE=Edge,chrome=1"
+
+# Generate a .htpasswd file using `htdigest` and
+# update the AuthUserFile line to point to it.
+<FilesMatch "^blog_admin(\.php)?$">
+	AuthType digest
+	AuthUserFile /home/thekirbylover/.htpasswd
+	AuthDigestProvider file
+	AuthName "BlogDown Protected Area"
+	Require valid-user
+</FilesMatch>
